@@ -58,7 +58,6 @@
     </ul>
 
     <div class="tab-content">
-        <!-- Generate QR Code Tab -->
         <div class="tab-pane fade show active" id="generate" role="tabpanel">
             <form action="/generate" method="POST" class="mt-4" target="qrImageFrame">
                 <div class="form-group">
@@ -70,14 +69,13 @@
             <div class="qr-image">
                 <iframe id="qrImageFrame" name="qrImageFrame" style="width:300px; height:300px; border:none;" allowfullscreen></iframe>
                 <br>
-                <a href="/download" target="_blank" class="btn btn-secondary mt-3">Download QR Code</a> <!-- Opens in new tab -->
+                <a href="/download" target="_blank" class="btn btn-secondary mt-3">Download QR Code</a> 
             </div>
         </div>
         
-        <!-- Scan QR Code Tab -->
         <div class="tab-pane fade" id="scan" role="tabpanel">
             <div class="text-center mt-4">
-                <a href="/scan"  class="btn btn-primary">Start QR Code Scanner</a> <!-- Opens in new tab -->
+                <a href="/scan"  class="btn btn-primary">Start QR Code Scanner</a> 
                 <p class="text-muted mt-3">Click to open the scanner and point it at a QR code</p>
             </div>
         </div>

@@ -1,10 +1,8 @@
-from flask import Flask, render_template, request, send_file, Response
+from flask import Flask, render_template, request, send_file,url_for,redirect
 import qrcode
 import cv2
 import os
-import numpy as np
 from io import BytesIO
-from werkzeug.utils import secure_filename
 
 app = Flask(__name__)
 
@@ -41,7 +39,6 @@ def scan_qr():
         if data:
             cap.release()
             cv2.destroyAllWindows()
-            # Render the result page with the decoded URL
             return render_template('scan_result.html', url=data)
 
         cv2.imshow("QR Code Scanner", frame)
