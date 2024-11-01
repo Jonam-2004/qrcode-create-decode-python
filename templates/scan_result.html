@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR Scan Result</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; padding: 50px; }
+        button { padding: 10px 20px; font-size: 16px; margin-top: 20px; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <h1>QR Code Decoded</h1>
+    <p>URL: <a href="{{ url }}" target="_blank">{{ url }}</a></p>
+    <button onclick="window.open('{{ url }}', '_blank')">Open in New Tab</button>
+    <br><br>
+    <a href="/">Back to Home</a>
+</body>
+</html>
