@@ -11,3 +11,6 @@
 ```
  flask run
 ```
+
+### disclaimer:
+This scanner not works for the UPI qr codes.
