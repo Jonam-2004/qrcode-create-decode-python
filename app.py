@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, send_file,url_for,redirect
+from flask import Flask, render_template, request, send_file, url_for, redirect
 import qrcode
 import cv2
 import os
@@ -8,6 +8,7 @@ app = Flask(__name__)
 
 if not os.path.isdir('static'):
     os.makedirs('static')
+
 @app.route('/')
 def index():
     return render_template('index.html')
@@ -16,11 +17,13 @@ def index():
 def generate_qr():
     url = request.form.get('url')
     img = qrcode.make(url)
+    
     img_file = BytesIO()
     img.save(img_file, 'PNG')
     img_file.seek(0)
 
     img.save("static/qr_code.png")
+
     return send_file(img_file, mimetype='image/png')
 
 @app.route('/download')
