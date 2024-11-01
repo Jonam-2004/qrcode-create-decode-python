@@ -55,6 +55,9 @@
         <li class="nav-item">
             <a class="nav-link" id="scan-tab" data-toggle="tab" href="#scan" role="tab">Scan QR Code</a>
         </li>
+        <li class="nav-item">
+            <a class="nav-link" id="upload-tab" data-toggle="tab" href="#upload" role="tab">Upload QR Code Image</a>
+        </li>
     </ul>
 
     <div class="tab-content">
@@ -75,9 +78,19 @@
         
         <div class="tab-pane fade" id="scan" role="tabpanel">
             <div class="text-center mt-4">
-                <a href="/scan"  class="btn btn-primary">Start QR Code Scanner</a> 
+                <a href="/scan" class="btn btn-primary">Start QR Code Scanner</a> 
                 <p class="text-muted mt-3">Click to open the scanner and point it at a QR code</p>
             </div>
+        </div>
+
+        <div class="tab-pane fade" id="upload" role="tabpanel">
+            <form action="/upload" method="POST" enctype="multipart/form-data" class="mt-4">
+                <div class="form-group">
+                    <label for="qrCodeImage">Upload QR Code Image:</label>
+                    <input type="file" name="qrCodeImage" id="qrCodeImage" class="form-control" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Upload QR Code</button>
+            </form>
         </div>
     </div>
 </div>

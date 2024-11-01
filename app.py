@@ -6,6 +6,7 @@ from io import BytesIO
 
 app = Flask(__name__)
 
+# Create a directory for storing QR codes if it doesn't exist
 if not os.path.isdir('static'):
     os.makedirs('static')
 
@@ -52,6 +53,30 @@ def scan_qr():
     cap.release()
     cv2.destroyAllWindows()
     return redirect(url_for('index'))
+
+@app.route('/upload', methods=['POST'])
+def upload_qr():
+    if 'qrCodeImage' not in request.files:
+        return redirect(url_for('index'))
+    
+    file = request.files['qrCodeImage']
+    
+    if file.filename == '':
+        return redirect(url_for('index'))
+
+    file_path = os.path.join('static', file.filename)
+    file.save(file_path)
+
+    detector = cv2.QRCodeDetector()
+    data, bbox, _ = detector.detectAndDecode(cv2.imread(file_path))
+
+    if data:
+        os.remove(file_path) 
+        print(data) 
+        return render_template('scan_result.html', url=data) 
+    
+    os.remove(file_path)  
+    return "No QR code found", 400
 
 if __name__ == '__main__':
     app.run(debug=True)
